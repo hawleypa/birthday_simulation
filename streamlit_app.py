@@ -18,15 +18,16 @@ NUMBER_OF_SETS = st.session_state.number_of_sets
 # precision of value is 1/classrooms
 NUMBER_OF_CLASSROOMS = st.session_state.number_of_classrooms  # precision of value is 1/classrooms
 
-im = Image.open(r"C:\\Users\\hawle\\streamlit_projects\\favicon.ico")
+im = Image.open(r"favicon.ico")
+# im = Image.open(r"C:\\Users\\hawle\\streamlit_projects\\favicon.ico")
 st.set_page_config(page_title='Birthday Simulation',page_icon=im,
 layout='centered',menu_items=None)
 PLACEHOLDER = st.empty()
 
-print('pillow version: ' + Image.__version__)
-print('streamlit version: ' + st.__version__)
-print('numpy version: ' + np.__version__)
-print('plotly version: ' + ply.__version__)
+# print('pillow version: ' + Image.__version__)
+# print('streamlit version: ' + st.__version__)
+# print('numpy version: ' + np.__version__)
+# print('plotly version: ' + ply.__version__)
 
 def triple_found(first,second,third):
     '''See if the three arguments have the same value'''
@@ -78,7 +79,7 @@ def run_again():
             data_table = run_set_of_trials(NUMBER_OF_CLASSROOMS)
             mean_value_str = f'{np.mean(data_table):.4f}'
             group_labels = ' median '+str(np.median(data_table))+' mean '+mean_value_str
-            print("run number= " + str(run_number) + " label= " + group_labels)
+#            print("run number= " + str(run_number) + " label= " + group_labels)
             fig.add_trace(go.Histogram(x=data_table,name=group_labels,showlegend=True))
         fig.update_traces(opacity=0.75)
         fig.update_layout(title_text='Histogram for 1000 trials', # title of plot
