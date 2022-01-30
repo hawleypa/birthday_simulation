@@ -4,10 +4,9 @@ probability that 3 people share a birthday"""
 from PIL import Image
 import streamlit as st
 import numpy as np
-import plotly.graph_objects as go
+import plotly as ply
+from plotly import graph_objects as go
 from numpy.random import Generator, PCG64
-
-im = Image.open(r"C:\\Users\\hawle\\streamlit_projects\\favicon.ico")
 
 if 'number_of_sets' not in st.session_state:
     st.session_state.number_of_sets = int(1)
@@ -19,9 +18,15 @@ NUMBER_OF_SETS = st.session_state.number_of_sets
 # precision of value is 1/classrooms
 NUMBER_OF_CLASSROOMS = st.session_state.number_of_classrooms  # precision of value is 1/classrooms
 
+im = Image.open(r"C:\\Users\\hawle\\streamlit_projects\\favicon.ico")
 st.set_page_config(page_title='Birthday Simulation',page_icon=im,
 layout='centered',menu_items=None)
 PLACEHOLDER = st.empty()
+
+print('pillow version: ' + Image.__version__)
+print('streamlit version: ' + st.__version__)
+print('numpy version: ' + np.__version__)
+print('plotly version: ' + ply.__version__)
 
 def triple_found(first,second,third):
     '''See if the three arguments have the same value'''
@@ -88,7 +93,7 @@ def run_again():
 with st.form(key='my_form'):
     NUMBER_OF_SETS = st.number_input(
         'Enter the number of sets of trials that you want to run ',
-        min_value=1, max_value=10, value=1, step=1,
+        min_value=1, max_value=10, step=1,
         help='Each set is 1000 trials', key='number_of_sets')
     NUMBER_OF_CLASSROOMS = st.number_input('Enter the number of classrooms '+
     'you want to model for each set of trials that you want to run ',
